@@ -1,3 +1,4 @@
+#include <IGraph.hpp>
 #include <ArcGraph.hpp>
 #include <ListGraph.hpp>
 #include <MatrixGraph.hpp>
@@ -22,17 +23,37 @@ int main(int argc, const char * argv[]) {
     listGraph.AddEdge(6, 4);
     listGraph.AddEdge(7, 8);
     
-    MatrixGraph matrixGraph(listGraph);
-    SetGraph setGraph(matrixGraph);
-    ArcGraph arcGraph(matrixGraph);
-    
-    BFS(setGraph, [](int vertex){ std::cout << vertex << " "; });
+    BFS(listGraph, [](int vertex){ std::cout << vertex << " "; });
     std::cout << std::endl;
     
-    DFS(setGraph, [](int vertex){ std::cout << vertex << " "; });
+    DFS(listGraph, [](int vertex){ std::cout << vertex << " "; });
     std::cout << std::endl;
     
-    for (int vertex: topologicalSort(setGraph)){
+    for (int vertex: topologicalSort(listGraph)){
+        std::cout << vertex << " ";
+    }
+    std::cout << std::endl;
+    
+    //Проверим конструкторы от класса listGraph
+    MatrixGraph matrixGraph1(listGraph);
+    SetGraph setGraph1(listGraph);
+    ArcGraph arcGraph1(listGraph);
+
+    //Проверим конструкторы от класса MatrixGraph
+    SetGraph setGraph2(matrixGraph1);
+    ArcGraph arcGraph2(matrixGraph1);
+    
+    //Проверим конструкторы от класса setGraph2
+    ArcGraph arcGraph3(setGraph2);
+
+    std::cout << std::endl;
+    BFS(matrixGraph1, [](int vertex){ std::cout << vertex << " "; });
+    std::cout << std::endl;
+    
+    DFS(matrixGraph1, [](int vertex){ std::cout << vertex << " "; });
+    std::cout << std::endl;
+    
+    for (int vertex: topologicalSort(matrixGraph1)){
         std::cout << vertex << " ";
     }
     std::cout << std::endl;
