@@ -1,0 +1,13 @@
+add_library(IGraph src/IGraph.cpp)
+add_library(ArcGraph src/ArcGraph.cpp)
+add_library(ListGraph src/ListGraph.cpp)
+add_library(MatrixGraph src/MatrixGraph.cpp)
+add_library(SetGraph src/SetGraph.cpp)
+add_library(otherFunc src/otherFunc.cpp)
+
+target_include_directories(IGraph PUBLIC header)
+target_include_directories(ArcGraph PUBLIC header)
+target_include_directories(ListGraph PUBLIC header)
+target_include_directories(MatrixGraph PUBLIC header)
+target_include_directories(SetGraph PUBLIC header)
+target_include_directories(otherFunc PUBLIC header)
